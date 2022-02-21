@@ -11,3 +11,9 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+.nav-link strong {
+  color: white;
+  font-size: 22px;
+  letter-spacing: 2px;
+}
