@@ -1,0 +1,6 @@
+<%= simple_form_for [ @space, @booking ] do |f| %>
+          <%= f.input :booking_date %>
+          <%= f.input :booking_start_time %>
+          <%= f.input :booking_end_time %>
+          <%= f.submit "Send a Booking request", class: "btn btn-primary" %>
+          <% end %>

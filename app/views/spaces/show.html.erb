@@ -2,4 +2,5 @@
 <p><%= @space.location %></p>
 <h2><%= @space.user %></h2>
 
+<%= link_to 'Book Now', new_space_booking_path(@space), :class => "btn btn-primary" %>
 <%= link_to "Back to spaces", spaces_path %>
