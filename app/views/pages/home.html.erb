@@ -1,2 +1,38 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1626379961798-54f819ee896a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);">
+  <div class="container d-flex justify-content-center">
+    <h1 class="fs-1">Discover a VR place near you</h1>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-12">
+        <h1 class="m-4">Find the latest listings</h1>
+        <div class="d-flex align-content-start flex-wrap">
+            <%# TODO: add iterator for latest added spaces %>
+            <div class="card-product m-3">
+              <%# TODO: has_photo to be implemented in space model %>
+              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+              <div>
+                <div class="card-product-infos">
+                  <%# TODO: Customize price according to space.name %>
+                  <h2 class="pt-4">VR Space name</h2>
+                  <%# TODO: Customize price according to space.location %>
+                  <p>VR space address and description. </p>
+                </div>
+                <div class="card-product-infos pt-0">
+                  <%# TODO: Customize price according to space.price %>
+                  <p>AED 20/ hour</p>
+                  <%# TODO: Customize star rating according to review.rating %>
+                  <p class="pb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> 2o reviews</p>
+                </div>
+              </div>
+              <%# TODO: link_to new booking%>
+              <a class="btn btn-info" href="#">Book now</a>
+            </div>
+
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
