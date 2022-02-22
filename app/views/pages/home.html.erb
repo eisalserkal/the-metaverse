@@ -9,20 +9,28 @@
       <div class="col-12">
         <h1 class="m-4">Find the latest listings</h1>
         <div class="d-flex align-content-start flex-wrap">
-            <div class="card-product">
+            <%# TODO: add iterator for latest added spaces %>
+            <div class="card-product m-3">
+              <%# TODO: has_photo to be implemented in space model %>
               <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
               <div>
                 <div class="card-product-infos">
+                  <%# TODO: Customize price according to space.name %>
                   <h2 class="pt-4">VR Space name</h2>
+                  <%# TODO: Customize price according to space.location %>
                   <p>VR space address and description. </p>
                 </div>
                 <div class="card-product-infos pt-0">
+                  <%# TODO: Customize price according to space.price %>
                   <p>AED 20/ hour</p>
+                  <%# TODO: Customize star rating according to review.rating %>
                   <p class="pb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> 2o reviews</p>
                 </div>
               </div>
+              <%# TODO: link_to new booking%>
               <a class="btn btn-info" href="#">Book now</a>
             </div>
+
           </div>
         </div>
     </div>
