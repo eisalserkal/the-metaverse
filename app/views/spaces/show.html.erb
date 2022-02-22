@@ -1,6 +1,32 @@
+<div class="container">
 <h2><%= @space.name %></h2>
+<%# TODO: Add 'has_photo' to space model %>
+<div class="d-flex">
+  <img src="https://www.cnet.com/a/img/LLg84fdggU-EGFI2bUQ7Sd0IpxE=/940x528/2017/10/20/e8f232cc-25eb-4fa8-a11f-e4e1941fed8d/vr-zone-shinjuku-007.jpg" alt="VR Zone">
+  <div class="m-4">
+    <h2>Book your next session now</h2>
+    <%= simple_form_for [ @space, @booking ] do |f| %>
+      <%= f.input :booking_date %>
+      <%= f.input :booking_start_time %>
+      <%= f.input :booking_end_time %>
+      <%= f.submit "Send a Booking request", class: "btn btn-primary", data: { controller: "button", action: "click->button#updateButton" } %>
+    <% end %>
+  </div>
+</div>
 <p><%= @space.location %></p>
-<h2><%= @space.user %></h2>
+<%# TODO: Add 'overview' to space model %>
+<h2>Description</h2>
+<hr>
 
-<%= link_to 'Book Now', new_space_booking_path(@space), :class => "btn btn-primary" %>
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</p>
+<h2>Games supported</h2>
+<hr>
+
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</p>
+
 <%= link_to "Back to spaces", spaces_path %>
+</div>
