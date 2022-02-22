@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
   def listings
     @bookings = policy_scope(Booking).order(created_at: :desc)
+    @review = Review.new
   end
   def new
     @space = Space.find(params[:space_id])
