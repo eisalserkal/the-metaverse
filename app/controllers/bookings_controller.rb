@@ -3,30 +3,22 @@ class BookingsController < ApplicationController
     @bookings = policy_scope(Booking).order(created_at: :desc)
   end
   def new
-    @booking = Booking.find(params[:booking_id])
+    @space = Space.find(params[:space_id])
     @booking = Booking.new
     authorize @booking
   end
 
   def create
-    @booking = Booking.find(params[:booking_id])
+    @space = Space.find(params[:space_id])
     @booking = Booking.new(booking_params)
-    @booking.booking = @booking
+    @booking.space = @space
     @booking.user = current_user
     authorize @booking
     if @booking.save
-      redirect_to booking_path(@booking)
+      redirect_to space_path(@space)
     else
       render :new
     end
-  end
-
-  def destroy
-    @booking = Booking.find(params[:id])
-    authorize @booking
-    @booking.destroy
-
-    redirect_to booking_path(@booking.booking)
   end
 
   private
