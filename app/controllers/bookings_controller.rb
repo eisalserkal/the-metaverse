@@ -16,7 +16,6 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     authorize @booking
     if @booking.save
-      raise
       redirect_to space_path(@space)
     else
       render :new
