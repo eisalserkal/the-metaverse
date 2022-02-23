@@ -1,18 +1,31 @@
-<h1>Bookings</h1>
+<div class="container">
+
+
+<h1>My bookings</h1>
+<hr>
+<h2>Pending bookings</h2>
 <ul>
 <% @bookings.each do |booking| %>
-  <p><%= booking.space.name %></p>
-  <p><%= booking.space.location %></p>
-  <p><%= booking.booking_date %></p>
-  <%= simple_form_for @review do |f| %>
-        <%= f.input :booking_id, as: :hidden, :input_html => { value: booking.id }%>
-        <%= f.input :content %>
-        <%= f.input :rating %>
-        <%= f.submit %>
-  <% booking.reviews.each do |review| %>
-    <p><%= review.content %></p>
-    <p><%= review.is_owner ? "Owner" : "Renter"%></p>
-    <% end %>
+
+<div class="card m-4" style="width: 18rem;">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><%= link_to booking.space.name, space_path(booking.space) %></li>
+    <li class="list-group-item">Location: <%= booking.space.location %></li>
+    <li class="list-group-item">Date: <%= booking.booking_date %></li>
+    <li class="list-group-item">Session duration: <%= (booking.booking_end_time.strftime('%s').to_i - booking.booking_start_time.strftime('%s').to_i)/3600 %> hours</li>
+  </ul>
+  <div class="card-footer">
+    Status: <%= booking.status %>
+  </div>
+</div>
+
+<% if false %>
+<%= simple_form_for @review do |f| %>
+      <%= f.input :booking_id, as: :hidden, :input_html => { value: booking.id }%>
+      <%= f.input :content %>
+      <%= f.input :rating %>
+      <%= f.submit %>
   <% end %>
 <% end %>
-</ul>
+<% end %>
+</div>
