@@ -5,7 +5,7 @@ class BookingPolicy < ApplicationPolicy
       # scope.all
 
       # For a multi-tenant SaaS app, you may want to use:
-      scope.where(user: user)
+      scope.all
     end
   end
 

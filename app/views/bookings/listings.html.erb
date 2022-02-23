@@ -5,20 +5,18 @@
 <hr>
 <h2>Pending bookings</h2>
 <ul>
-<% @bookings.each do |booking| %>
-
-<div class="card m-4" style="width: 18rem;">
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item"><%= link_to booking.space.name, space_path(booking.space) %></li>
-    <li class="list-group-item">Location: <%= booking.space.location %></li>
-    <li class="list-group-item">Date: <%= booking.booking_date %></li>
-    <li class="list-group-item">Session duration: <%= (booking.booking_end_time.strftime('%s').to_i - booking.booking_start_time.strftime('%s').to_i)/3600 %> hours</li>
-  </ul>
-  <div class="card-footer">
-    Status: <%= booking.status %>
+<% @bookings_incoming.each do |booking| %>
+  <div class="card m-4" style="width: 18rem;">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><%= link_to booking.space.name, space_path(booking.space) %></li>
+      <li class="list-group-item">Location: <%= booking.space.location %></li>
+      <li class="list-group-item">Date: <%= booking.booking_date %></li>
+      <li class="list-group-item">Session duration: <%= (booking.booking_end_time.strftime('%s').to_i - booking.booking_start_time.strftime('%s').to_i)/3600 %> hours</li>
+    </ul>
+    <div class="card-footer">
+      Status: <%= booking.status %>
+    </div>
   </div>
-</div>
-
 <% if false %>
 <%= simple_form_for @review do |f| %>
       <%= f.input :booking_id, as: :hidden, :input_html => { value: booking.id }%>
@@ -27,5 +25,23 @@
       <%= f.submit %>
   <% end %>
 <% end %>
+<% end %>
+
+
+<h2>Bookings received</h2>
+
+<% @bookings_outgoing.each do |booking| %>
+    <div class="card m-4" style="width: 18rem;">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><%= link_to booking.space.name, space_path(booking.space) %></li>
+        <li class="list-group-item">Location: <%= booking.space.location %></li>
+        <li class="list-group-item">Date: <%= booking.booking_date %></li>
+        <li class="list-group-item">Session duration: <%= (booking.booking_end_time.strftime('%s').to_i - booking.booking_start_time.strftime('%s').to_i)/3600 %> hours</li>
+      </ul>
+      <div class="card-footer">
+        Status: <%= booking.status %>
+      </div>
+      <button type="button" class="btn btn-success">Accept</button>
+    </div>
 <% end %>
 </div>
