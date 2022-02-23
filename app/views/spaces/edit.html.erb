@@ -1,0 +1,9 @@
+<div class="container">
+<%= simple_form_for @space, class: 'col-6' do |f| %>
+  <%= f.input :name %>
+  <%= f.input :location %>
+  <%= f.input :hourly_rate %>
+  <%= f.input :vr_headset, collection: ['Oculus Rift', 'Oculus Quest', 'HTC Vive', 'Playstation VR', 'Valve Index']%>
+  <%= f.submit "Create listing", class: "btn btn-primary" %>
+  <% end %>
+</div>

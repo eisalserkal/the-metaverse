@@ -6,9 +6,9 @@
   <div class="m-4">
     <h2>Book your next session now</h2>
     <%= simple_form_for [ @space, @booking ] do |f| %>
-      <%= f.input :booking_date %>
-      <%= f.input :booking_start_time %>
-      <%= f.input :booking_end_time %>
+      <%= f.input :booking_date%>
+      <%= f.input :booking_start_time%>
+      <%= f.input :booking_end_time%>
       <%= f.submit "Send a Booking request", class: "btn btn-primary", data: { controller: "button", action: "click->button#updateButton" } %>
     <% end %>
   </div>
