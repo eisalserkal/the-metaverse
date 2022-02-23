@@ -1,38 +1,31 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1626379961798-54f819ee896a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://data.whicdn.com/images/323289519/original.gif);">
   <div class="container d-flex justify-content-center">
-    <h1 class="fs-1">Discover a VR place near you</h1>
+    <h1 class="ml15">
+  <span class="word">The</span>
+  <span class="word">Metaverse</span>
+  </h1>
   </div>
 </div>
-
 <div class="container">
   <div class="row">
-      <div class="col-12">
+      <div class="col-6">
         <h1 class="m-4">Find the latest listings</h1>
         <div class="d-flex align-content-start flex-wrap">
-            <%# TODO: add iterator for latest added spaces %>
-            <div class="card-product m-3">
-              <%# TODO: has_photo to be implemented in space model %>
-              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <% @spaces.last(3).each do |space| %>
+          <div class="card-trip m-4">
+            <img src="https://www.cnet.com/a/img/LLg84fdggU-EGFI2bUQ7Sd0IpxE=/940x528/2017/10/20/e8f232cc-25eb-4fa8-a11f-e4e1941fed8d/vr-zone-shinjuku-007.jpg" />
+            <div class="card-trip-infos">
               <div>
-                <div class="card-product-infos">
-                  <%# TODO: Customize price according to space.name %>
-                  <h2 class="pt-4">VR Space name</h2>
-                  <%# TODO: Customize price according to space.location %>
-                  <p>VR space address and description. </p>
-                </div>
-                <div class="card-product-infos pt-0">
-                  <%# TODO: Customize price according to space.price %>
-                  <p>AED 20/ hour</p>
-                  <%# TODO: Customize star rating according to review.rating %>
-                  <p class="pb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> 2o reviews</p>
-                </div>
+                <h2><%= space.name %></h2>
+                <p>Location: <%= space.location %></p>
               </div>
-              <%# TODO: link_to new booking%>
-              <a class="btn btn-info" href="#">Book now</a>
+              <h2 class="card-trip-pricing">AED <%= space.hourly_rate %>/hr</h2>
+              <%= link_to "Click for more info", space_path(space) %>
             </div>
-
           </div>
+        <% end %>
         </div>
     </div>
   </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
