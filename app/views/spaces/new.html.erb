@@ -4,6 +4,7 @@
   <%= f.input :location %>
   <%= f.input :hourly_rate %>
   <%= f.input :vr_headset, collection: ['Oculus Rift', 'Oculus Quest', 'HTC Vive', 'Playstation VR', 'Valve Index']%>
+  <%= f.input :photo, as: :file %>
   <%= f.submit "Create listing", class: "btn btn-primary" %>
   <% end %>
 </div>

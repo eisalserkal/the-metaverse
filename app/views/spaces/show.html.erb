@@ -2,7 +2,8 @@
 <h2><%= @space.name %></h2>
 <%# TODO: Add 'has_photo' to space model %>
 <div class="d-flex">
-  <img src="https://www.cnet.com/a/img/LLg84fdggU-EGFI2bUQ7Sd0IpxE=/940x528/2017/10/20/e8f232cc-25eb-4fa8-a11f-e4e1941fed8d/vr-zone-shinjuku-007.jpg" alt="VR Zone">
+<%= cl_image_tag @space.photo.key, height: 300, width: 400, crop: :fill %>
+  <%# <img src="https://www.cnet.com/a/img/LLg84fdggU-EGFI2bUQ7Sd0IpxE=/940x528/2017/10/20/e8f232cc-25eb-4fa8-a11f-e4e1941fed8d/vr-zone-shinjuku-007.jpg" alt="VR Zone"> %>
   <div class="m-4">
     <h2>Book your next session now</h2>
     <%= simple_form_for [ @space, @booking ] do |f| %>
@@ -13,7 +14,7 @@
     <% end %>
   </div>
 </div>
-<p><%= @space.location %></p>
+<p><strong><%= @space.location %></strong></p>
 <%# TODO: Add 'overview' to space model %>
 <h2>Description</h2>
 <hr>
