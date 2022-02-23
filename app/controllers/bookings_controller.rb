@@ -3,11 +3,11 @@ class BookingsController < ApplicationController
     @bookings = policy_scope(Booking).order(created_at: :desc)
     @review = Review.new
   end
-  def new
-    @space = Space.find(params[:space_id])
-    @booking = Booking.new
-    authorize @booking
-  end
+  # def new
+  #   @space = Space.find(params[:space_id])
+  #   @booking = Booking.new
+  #   authorize @booking
+  # end
 
   def create
     @space = Space.find(params[:space_id])
