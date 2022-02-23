@@ -28,14 +28,6 @@ ActiveRecord::Schema.define(version: 2022_02_22_174703) do
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
-  create_table "games", force: :cascade do |t|
-    t.string "title"
-    t.bigint "space_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["space_id"], name: "index_games_on_space_id"
-  end
-
   create_table "reviews", force: :cascade do |t|
     t.string "content"
     t.integer "rating"
@@ -72,18 +64,8 @@ ActiveRecord::Schema.define(version: 2022_02_22_174703) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "vr_headsets", force: :cascade do |t|
-    t.string "brand"
-    t.bigint "space_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["space_id"], name: "index_vr_headsets_on_space_id"
-  end
-
   add_foreign_key "bookings", "spaces"
   add_foreign_key "bookings", "users"
-  add_foreign_key "games", "spaces"
   add_foreign_key "reviews", "bookings"
   add_foreign_key "spaces", "users"
-  add_foreign_key "vr_headsets", "spaces"
 end
