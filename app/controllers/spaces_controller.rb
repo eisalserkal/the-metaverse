@@ -2,6 +2,15 @@ class SpacesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   def index
     @spaces = Space.all
+    sum = 0
+    count = 0
+    @spaces.each do |space|
+      space.reviews.each do |review|
+      sum += review.rating
+        count += 1
+      end
+      average = sum/count
+    end
   end
 
   def listings
