@@ -3,21 +3,25 @@
   <div class="row">
       <div class="col-12">
         <h1 class="m-4">Find the latest listings</h1>
-        <div class="card">
-        <%= form_tag spaces_path, method: :get do %>
-          <%= text_field_tag :query,
-            params[:query],
-            class: "form-control",
-            placeholder: "Find a space!"
-          %>
-          <%= submit_tag "Search", class: "btn btn-primary mt-2 ml-1" %>
-        <% end %>
-        <div class="d-flex align-content-start flex-wrap justify-content-evenly">
-        <% @spaces.each do |space| %>
-          <%= render 'shared/space_card1', space: space %>
-        <% end %>
-        </div>
-    <button type="button" class="btn btn-outline-primary"><%= link_to "Spaces", spaces_path %></button>
+        <div class="card form-inline">
+          <div class="active-cyan-3 active-cyan-4 mb-4 form-inline justify-content-center mt-2">
+          <%= form_tag spaces_path, method: :get do %>
+            <%= text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              placeholder: "Find a space!"
+            %>
+            <%= submit_tag "Search", class: "btn btn-primary" %>
+          <% end %>
+          </div>
+          <div class="d-flex align-content-start flex-wrap justify-content-evenly">
+          <% @spaces.each do |space| %>
+            <%= render 'shared/space_card1', space: space %>
+          <% end %>
+          </div>
+            <div class="d-flex justify-content-center mb-4">
+              <%= link_to "Spaces", spaces_path, class: "btn btn-primary" %>
+            </div>
       </div>
     </div>
   </div>
