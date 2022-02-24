@@ -18,6 +18,7 @@
         <% end %>
       <div class="col-6">
         <h1 class="m-4">Find the latest listings</h1>
+
         <div class="d-flex align-content-start flex-wrap justify-content-evenly">
         <% @spaces.last(4).each do |space| %>
           <div class="card-trip m-4">
@@ -35,6 +36,11 @@
               <%= link_to "Click for more info", space_path(space) %>
             </div>
           </div>
+
+        <div class="d-flex align-content-start flex-wrap">
+        <% @spaces.last(3).each do |space| %>
+          <%= render 'shared/space_card1', space: space %>
+
         <% end %>
         </div>
     </div>
