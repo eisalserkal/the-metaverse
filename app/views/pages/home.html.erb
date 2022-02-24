@@ -1,33 +1,38 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://data.whicdn.com/images/323289519/original.gif);">
   <div class="container d-flex justify-content-center">
-    <h1 class="ml15">
+    <h1 class="ml15 text-center">
   <span class="word">The</span>
   <span class="word">Metaverse</span>
   </h1>
   </div>
 </div>
 <div class="container">
+    <div class="text-center">
+    <h1 class="m-4">Find the latest VR Spaces</h1>
+    </div>
+  <div class="active-cyan-3 active-cyan-4 mb-4 form-inline justify-content-center">
+  <%= form_tag spaces_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control mt-2",
+      placeholder: "Find a space!"
+      %>
+    <%= submit_tag "Search", class: "btn btn-primary mt-2" %>
+    <% end %>
+  </div>
+</div>
+
+
+<div class="container">
   <div class="row">
-       <%= form_tag spaces_path, method: :get do %>
-          <%= text_field_tag :query,
-            params[:query],
-            class: "form-control mt-2",
-            placeholder: "Find a space!"
-          %>
-          <%= submit_tag "Search", class: "btn btn-primary mt-2" %>
-        <% end %>
-      <div class="col-6">
-        <h1 class="m-4">Find the latest listings</h1>
-
-
-        <div class="d-flex align-content-start flex-wrap">
-        <% @spaces.last(4).each do |space| %>
+        <% @spaces.last(2).each do |space| %>
           <%= render 'shared/space_card1', space: space %>
 
         <% end %>
-        </div>
     </div>
   </div>
-  <%= link_to "See more listings", spaces_path %>
+  <div class="d-flex justify-content-center">
+  <%= link_to "See more listings", spaces_path, class: "btn btn-primary mt-2" %>
+  </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
