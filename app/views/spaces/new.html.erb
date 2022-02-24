@@ -7,6 +7,8 @@
               geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
   <%= f.input :hourly_rate %>
   <%= f.input :vr_headset, collection: ['Oculus Rift', 'Oculus Quest', 'HTC Vive', 'Playstation VR', 'Valve Index']%>
+  <%= f.input :games %>
+  <%= f.input :overview %>
   <%= f.input :photo, as: :file %>
   <%= f.submit "Create listing", class: "btn btn-primary" %>
   <% end %>
