@@ -1,32 +1,12 @@
+  <h1 class="m-4 text-center">Your listings</h1>
+  <div class="d-flex justify-content-center">
+  <%= link_to 'Add a Space', new_space_path, :class => "btn btn-primary m-4 text-center" %>
+  </div>
 <div class="container">
-  <h1 class="m-4">Your listings</h1>
-  <%= link_to 'Add a Space', new_space_path, :class => "btn btn-primary m-4" %>
   <div class="row">
-      <div class="col-6">
-        <div class="d-flex align-content-start flex-wrap">
         <% @spaces.each do |space| %>
-          <div class="card-trip m-4">
-            <% if space.photo.blank? %>
-            <img src="https://www.cnet.com/a/img/LLg84fdggU-EGFI2bUQ7Sd0IpxE=/940x528/2017/10/20/e8f232cc-25eb-4fa8-a11f-e4e1941fed8d/vr-zone-shinjuku-007.jpg" alt="VR Zone">
-            <% else %>
-            <%= cl_image_tag space.photo.key, height: 300, width: 400, crop: :fill %>
-            <% end %>
-            <div class="card-trip-infos">
-              <div>
-                <h2><%= link_to space.name, space_path(space) %></h2>
-                <p>Location: <%= space.location %></p>
-              </div>
-              <h2 class="card-trip-pricing">AED <%= space.hourly_rate %>/hr</h2>
-              <%= link_to edit_space_path(space) do %>
-                 <i class="fa-solid fa-pen-to-square"></i>
-              <% end %>
-              <%= link_to space_path(space), method: :delete, data: { confirm: "Are you sure?" } do %>
-                 <i class="fa-solid fa-trash"></i>
-              <% end %>
-            </div>
-          </div>
+          <%= render 'shared/space_card2', space: space %>
         <% end %>
-        </div>
     </div>
   </div>
 </div>
