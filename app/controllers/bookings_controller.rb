@@ -6,9 +6,9 @@ class BookingsController < ApplicationController
     @bookings_incoming = []
     @bookings.each do |booking|
       if booking.space.user == current_user
-        @bookings_outgoing << booking
-      elsif booking.user = current_user
         @bookings_incoming << booking
+      elsif booking.user = current_user
+        @bookings_outgoing << booking
       end
     end
   end

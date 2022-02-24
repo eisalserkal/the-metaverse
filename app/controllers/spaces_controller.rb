@@ -54,12 +54,12 @@ class SpacesController < ApplicationController
     authorize @space
     @space.destroy
 
-    redirect_to spaces_path
+    redirect_to listings_path
   end
 
   private
 
   def space_params
-    params.require(:space).permit(:name, :location, :hourly_rate, :photo)
+    params.require(:space).permit(:name, :location, :hourly_rate, :vr_headset, :photo)
   end
 end

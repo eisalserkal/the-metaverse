@@ -5,7 +5,7 @@
 <hr>
 <h2>Pending bookings</h2>
 <ul>
-<% @bookings_incoming.each do |booking| %>
+<% @bookings_outgoing.each do |booking| %>
   <div class="card m-4" style="width: 18rem;">
     <ul class="list-group list-group-flush">
       <li class="list-group-item"><%= link_to booking.space.name, space_path(booking.space) %></li>
@@ -30,7 +30,7 @@
 
 <h2>Bookings received</h2>
 
-<% @bookings_outgoing.each do |booking| %>
+<% @bookings_incoming.each do |booking| %>
     <div class="card m-4" style="width: 18rem;">
       <ul class="list-group list-group-flush">
         <li class="list-group-item"><%= link_to booking.space.name, space_path(booking.space) %></li>
