@@ -1,0 +1,8 @@
+<h4><%= link_to space.name, space_path(space) %></h4>
+<p><strong>Location:</strong> <%= space.location %></p>
+<p><strong>VR tech:</strong> <%= space.vr_headset %></p>
+<% if space.photo.blank? %>
+<img src="https://www.cnet.com/a/img/LLg84fdggU-EGFI2bUQ7Sd0IpxE=/940x528/2017/10/20/e8f232cc-25eb-4fa8-a11f-e4e1941fed8d/vr-zone-shinjuku-007.jpg" alt="VR Zone" style="width:220px;height:200px">
+<% else %>
+<%= cl_image_tag space.photo.key, height: 200, width: 220, crop: :fill %>
+<% end %>

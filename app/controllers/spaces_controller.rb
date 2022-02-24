@@ -4,7 +4,15 @@ class SpacesController < ApplicationController
     if params[:query].present?
       @spaces = Space.search_by_name_location_vr(params[:query])
     else
-        @spaces = Space.all
+      @spaces = Space.all
+    end
+
+    @markers = @spaces.geocoded.map do |space|
+      {
+        lat: space.latitude,
+        lng: space.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { space: space })
+      }
     end
   end
 
