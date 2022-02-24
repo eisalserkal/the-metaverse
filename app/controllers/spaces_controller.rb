@@ -1,7 +1,11 @@
 class SpacesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   def index
-    @spaces = Space.all
+    if params[:query].present?
+      @spaces = Space.search_by_name_location_vr(params[:query])
+    else
+        @spaces = Space.all
+    end
   end
 
   def listings
