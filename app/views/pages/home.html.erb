@@ -8,10 +8,18 @@
 </div>
 <div class="container">
   <div class="row">
+       <%= form_tag spaces_path, method: :get do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control mt-2",
+            placeholder: "Find a space!"
+          %>
+          <%= submit_tag "Search", class: "btn btn-primary mt-2" %>
+        <% end %>
       <div class="col-6">
         <h1 class="m-4">Find the latest listings</h1>
-        <div class="d-flex align-content-start flex-wrap">
-        <% @spaces.last(3).each do |space| %>
+        <div class="d-flex align-content-start flex-wrap justify-content-evenly">
+        <% @spaces.last(4).each do |space| %>
           <div class="card-trip m-4">
             <% if space.photo.blank? %>
             <img src="https://www.cnet.com/a/img/LLg84fdggU-EGFI2bUQ7Sd0IpxE=/940x528/2017/10/20/e8f232cc-25eb-4fa8-a11f-e4e1941fed8d/vr-zone-shinjuku-007.jpg" alt="VR Zone">
