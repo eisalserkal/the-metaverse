@@ -26,7 +26,7 @@
                 <% sum += review.rating %>
                 <% count += 1 %>
               <% end %>
-              <% if count == 0 %>
+              <% if count == 0 || sum == %>
                 <%= 0 %>
               <% else %>
                 <% average = sum/count %>
@@ -35,7 +35,6 @@
                 <% end %>
                 (<%= count%>)
               <% end %>
-
               </p>
               <p><%= link_to "Click for more info", space_path(space) %></p>
             </div>
