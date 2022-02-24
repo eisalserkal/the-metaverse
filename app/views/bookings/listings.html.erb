@@ -1,173 +1,193 @@
-<div class="container">
-
-
-<h1>My bookings</h1>
-<hr>
-<h2>Pending bookings</h2>
-<h4>Bookings received</h4>
-
-<% @bookings_incoming.each do |booking| %>
-    <% if booking.status == 'Pending' %>
-    <div class="card m-4" style="width: 18rem;">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><%= link_to booking.space.name, space_path(booking.space) %></li>
-        <li class="list-group-item">Location: <%= booking.space.location %></li>
-        <li class="list-group-item">Date: <%= booking.booking_date %></li>
-      </ul>
-      <div class="card-footer">
-        <% if booking.status == 'Decline' %>
-          Status: Declined
-        <% elsif booking.status == 'Accept' %>
-          Status: Accepted
-        <% end %>
-      </div>
-      <% if booking.status == 'Pending' %>
-        <%= simple_form_for booking do |f| %>
-        <%= f.input :status, collection: ['Accept', 'Decline'] %>
-        <%= f.submit "Send response", class: "btn btn-success" %>
-        <% end %>
-      <% end %>
-    </div>
-<% end %>
-<% end %>
-<h4>Bookings sent</h4>
-<% @bookings_outgoing.each do |booking| %>
-  <% if booking.status == 'Pending' %>
-    <div class="card m-4" style="width: 18rem;">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><%= link_to booking.space.name, space_path(booking.space) %></li>
-        <li class="list-group-item">Location: <%= booking.space.location %></li>
-        <li class="list-group-item">Date: <%= booking.booking_date %></li>
-      </ul>
-      <div class="card-footer">
-        Status: <%= booking.status %>
-      </div>
-    </div>
-  <% end %>
-
-<% end %>
-
-
-
-</div>
-
-<div class="container">
-<h2 class="mt-5">Accepted bookings</h2>
-<h4>Bookings received</h4>
-<% @bookings_incoming.each do |booking| %>
-  <% if booking.status == 'Accept' %>
-    <div class="card m-4" style="width: 18rem;">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><%= link_to booking.space.name, space_path(booking.space) %></li>
-        <li class="list-group-item">Location: <%= booking.space.location %></li>
-        <li class="list-group-item">Date: <%= booking.booking_date %></li>
-      </ul>
-      <div class="card-footer">
-        <% if booking.status == 'Decline' %>
-          Status: Declined
-        <% elsif booking.status == 'Accept' %>
-          Status: Accepted
-        <% end %>
-      </div>
-      <% if booking.status == 'Pending' %>
-        <%= simple_form_for booking do |f| %>
-        <%= f.input :status, collection: ['Accept', 'Decline'] %>
-        <%= f.submit "Send response", class: "btn btn-success" %>
-        <% end %>
-      <% end %>
-    </div>
-<% end %>
-
-<% end %>
-
-<h4>Bookings sent</h4>
-<% @bookings_outgoing.each do |booking| %>
-  <% if booking.status == 'Accept' %>
+<div class="d-flex">
   <div>
-    <div class="card m-4" style="width: 18rem;">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><%= link_to booking.space.name, space_path(booking.space) %></li>
-        <li class="list-group-item">Location: <%= booking.space.location %></li>
-        <li class="list-group-item">Date: <%= booking.booking_date %></li>
-      </ul>
-      <div class="card-footer">
-        <% if booking.status == 'Decline' %>
-          Status: Declined
-        <% elsif booking.status == 'Accept' %>
-          Status: Accepted
+    <ul>
+    <li><a href="#">Bookings</a></li>
+    <li><a href="#">Listings</a></li>
+    </ul>
+  </div>
+
+
+  <div class="container">
+
+
+  <h1>My bookings</h1>
+  <hr>
+  <h2>Pending bookings</h2>
+  <h4>Bookings received</h4>
+
+  <% @bookings_incoming.each do |booking| %>
+      <% if booking.status == 'Pending' %>
+      <div class="card m-4" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><%= link_to booking.space.name, space_path(booking.space) %></li>
+          <li class="list-group-item">Location: <%= booking.space.location %></li>
+          <li class="list-group-item">Date: <%= booking.booking_date %></li>
+        </ul>
+        <div class="card-footer">
+          <% if booking.status == 'Decline' %>
+            Status: Declined
+          <% elsif booking.status == 'Accept' %>
+            Status: Accepted
+          <% end %>
+        </div>
+        <% if booking.status == 'Pending' %>
+          <%= simple_form_for booking do |f| %>
+          <%= f.input :status, collection: ['Accept', 'Decline'] %>
+          <%= f.submit "Send response", class: "btn btn-success" %>
+          <% end %>
         <% end %>
       </div>
-      <% if booking.status == 'Pending' %>
-        <%= simple_form_for booking do |f| %>
-        <%= f.input :status, collection: ['Accept', 'Decline'] %>
-        <%= f.submit "Send response", class: "btn btn-success" %>
-        <% end %>
-      <% end %>
-    </div>
-      <p class="fs-5">Leave a review</p>
-      <%= simple_form_for @review do |f| %>
-      <%= f.input :booking_id, as: :hidden, :input_html => { value: booking.id }%>
-      <%= f.input :content %>
-      <%= f.input :rating %>
-      <%= f.submit "Submit", class: "btn btn-primary"%>
+  <% end %>
+  <% end %>
+  <h4>Bookings sent</h4>
+  <% @bookings_outgoing.each do |booking| %>
+    <% if booking.status == 'Pending' %>
+      <div class="card m-4" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><%= link_to booking.space.name, space_path(booking.space) %></li>
+          <li class="list-group-item">Location: <%= booking.space.location %></li>
+          <li class="list-group-item">Date: <%= booking.booking_date %></li>
+        </ul>
+        <div class="card-footer">
+          Status: <%= booking.status %>
+        </div>
+      </div>
     <% end %>
-    </div>
+
   <% end %>
 
-<% end %>
 
-<h2 class="mt-5">Declined bookings</h2>
-<h4>Bookings received</h4>
-<% @bookings_incoming.each do |booking| %>
-  <% if booking.status == 'Decline' %>
-    <div class="card m-4" style="width: 18rem;">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><%= link_to booking.space.name, space_path(booking.space) %></li>
-        <li class="list-group-item">Location: <%= booking.space.location %></li>
-        <li class="list-group-item">Date: <%= booking.booking_date %></li>
-      </ul>
-      <div class="card-footer">
-        <% if booking.status == 'Decline' %>
-          Status: Declined
-        <% elsif booking.status == 'Accept' %>
-          Status: Accepted
+
+  <h2 class="mt-5">Accepted bookings</h2>
+  <h4>Bookings received</h4>
+  <% @bookings_incoming.each do |booking| %>
+    <% if booking.status == 'Accept' %>
+      <div class="card m-4" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><%= link_to booking.space.name, space_path(booking.space) %></li>
+          <li class="list-group-item">Location: <%= booking.space.location %></li>
+          <li class="list-group-item">Date: <%= booking.booking_date %></li>
+        </ul>
+        <div class="card-footer">
+          <% if booking.status == 'Decline' %>
+            Status: Declined
+          <% elsif booking.status == 'Accept' %>
+            Status: Accepted
+          <% end %>
+        </div>
+        <% if booking.status == 'Pending' %>
+          <%= simple_form_for booking do |f| %>
+          <%= f.input :status, collection: ['Accept', 'Decline'] %>
+          <%= f.submit "Send response", class: "btn btn-success" %>
+          <% end %>
         <% end %>
       </div>
-      <% if booking.status == 'Pending' %>
-        <%= simple_form_for booking do |f| %>
-        <%= f.input :status, collection: ['Accept', 'Decline'] %>
-        <%= f.submit "Send response", class: "btn btn-success" %>
-        <% end %>
-      <% end %>
-    </div>
-<% end %>
-<% end %>
+  <% end %>
 
-<div>
-<h4>Bookings sent</h4>
-<% @bookings_outgoing.each do |booking| %>
-  <% if booking.status == 'Decline' %>
-    <div class="card m-4" style="width: 18rem;">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><%= link_to booking.space.name, space_path(booking.space) %></li>
-        <li class="list-group-item">Location: <%= booking.space.location %></li>
-        <li class="list-group-item">Date: <%= booking.booking_date %></li>
-      </ul>
-      <div class="card-footer">
-        <% if booking.status == 'Decline' %>
-          Status: Declined
-        <% elsif booking.status == 'Accept' %>
-          Status: Accepted
+  <% end %>
+
+  <h4>Bookings sent</h4>
+  <% @bookings_outgoing.each do |booking| %>
+    <% if booking.status == 'Accept' %>
+    <div>
+      <div class="card m-4" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><%= link_to booking.space.name, space_path(booking.space) %></li>
+          <li class="list-group-item">Location: <%= booking.space.location %></li>
+          <li class="list-group-item">Date: <%= booking.booking_date %></li>
+        </ul>
+        <div class="card-footer">
+          <% if booking.status == 'Decline' %>
+            Status: Declined
+          <% elsif booking.status == 'Accept' %>
+            Status: Accepted
+          <% end %>
+        </div>
+        <% if booking.status == 'Pending' %>
+          <%= simple_form_for booking do |f| %>
+          <%= f.input :status, collection: ['Accept', 'Decline'] %>
+          <%= f.submit "Send response", class: "btn btn-success" %>
+          <% end %>
         <% end %>
       </div>
-      <% if booking.status == 'Pending' %>
-        <%= simple_form_for booking do |f| %>
-        <%= f.input :status, collection: ['Accept', 'Decline'] %>
-        <%= f.submit "Send response", class: "btn btn-success" %>
-        <% end %>
+        <p class="fs-5">Leave a review</p>
+        <%= simple_form_for @review do |f| %>
+        <%= f.input :booking_id, as: :hidden, :input_html => { value: booking.id }%>
+        <%= f.input :content %>
+        <%= f.input :rating %>
+        <%= f.submit "Submit", class: "btn btn-primary"%>
       <% end %>
-    </div>
-<% end %>
-<% end %>
+      </div>
+    <% end %>
 
+  <% end %>
+
+  <h2 class="mt-5">Declined bookings</h2>
+  <h4>Bookings received</h4>
+  <% @bookings_incoming.each do |booking| %>
+    <% if booking.status == 'Decline' %>
+      <div class="card m-4" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><%= link_to booking.space.name, space_path(booking.space) %></li>
+          <li class="list-group-item">Location: <%= booking.space.location %></li>
+          <li class="list-group-item">Date: <%= booking.booking_date %></li>
+        </ul>
+        <div class="card-footer">
+          <% if booking.status == 'Decline' %>
+            Status: Declined
+          <% elsif booking.status == 'Accept' %>
+            Status: Accepted
+          <% end %>
+        </div>
+        <% if booking.status == 'Pending' %>
+          <%= simple_form_for booking do |f| %>
+          <%= f.input :status, collection: ['Accept', 'Decline'] %>
+          <%= f.submit "Send response", class: "btn btn-success" %>
+          <% end %>
+        <% end %>
+      </div>
+  <% end %>
+  <% end %>
+
+
+  <h4>Bookings sent</h4>
+  <% @bookings_outgoing.each do |booking| %>
+    <% if booking.status == 'Decline' %>
+      <div class="card m-4" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><%= link_to booking.space.name, space_path(booking.space) %></li>
+          <li class="list-group-item">Location: <%= booking.space.location %></li>
+          <li class="list-group-item">Date: <%= booking.booking_date %></li>
+        </ul>
+        <div class="card-footer">
+          <% if booking.status == 'Decline' %>
+            Status: Declined
+          <% elsif booking.status == 'Accept' %>
+            Status: Accepted
+          <% end %>
+        </div>
+        <% if booking.status == 'Pending' %>
+          <%= simple_form_for booking do |f| %>
+          <%= f.input :status, collection: ['Accept', 'Decline'] %>
+          <%= f.submit "Send response", class: "btn btn-success" %>
+          <% end %>
+        <% end %>
+      </div>
+  <% end %>
+  <% end %>
+
+
+    <h1 class="mt-4">My listings</h1>
+    <hr>
+    <%= link_to 'Add a Space', new_space_path, :class => "btn btn-primary m-4" %>
+    <div class="row">
+        <div class="col-6">
+          <div class="d-flex align-content-start flex-wrap">
+          <% @spaces.each do |space| %>
+          <%= render 'shared/space_card1', space: space %>
+          <% end %>
+          </div>
+        </div>
+    </div>
+  </div>
 </div>
