@@ -1,15 +1,18 @@
-<div class="d-flex">
-  <div>
-    <ul>
-    <li><a href="#">Bookings</a></li>
-    <li><a href="#">Listings</a></li>
+<div class="d-flex" data-controller="pagination">
+
+  <div class="card" style="width: 18rem;">
+    <div class="card-header">
+      Dashboard
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" data-action="click->pagination#bookings">Bookings</a></li>
+      <li class="list-group-item" data-action="click->pagination#listings">Listings</a></li>
     </ul>
   </div>
 
+  <div class="container" >
 
-  <div class="container">
-
-
+  <div data-pagination-target="bookings" >
   <h1>My bookings</h1>
   <hr>
   <h2>Pending bookings</h2>
@@ -176,18 +179,20 @@
   <% end %>
   <% end %>
 
+  </div>
 
+  <div data-pagination-target="listings">
     <h1 class="mt-4">My listings</h1>
     <hr>
     <%= link_to 'Add a Space', new_space_path, :class => "btn btn-primary m-4" %>
     <div class="row">
-        <div class="col-6">
-          <div class="d-flex align-content-start flex-wrap">
+
           <% @spaces.each do |space| %>
           <%= render 'shared/space_card2', space: space %>
           <% end %>
-          </div>
-        </div>
+
     </div>
+  </div>
+
   </div>
 </div>
