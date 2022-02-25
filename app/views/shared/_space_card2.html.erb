@@ -10,7 +10,7 @@
                 <h2><%= link_to space.name, space_path(space) %></h2>
                 <p>Location: <%= space.location %></p>
               </div>
-              <h2 class="card-trip-pricing">AED <%= space.hourly_rate %>/hr</h2>
+              <h2 class="card-trip-pricing">AED <%= space.hourly_rate %>/day</h2>
               <%= link_to edit_space_path(space) do %>
                 <i class="fa-solid fa-pen-to-square"></i>
               <% end %>

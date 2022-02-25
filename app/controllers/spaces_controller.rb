@@ -56,8 +56,11 @@ class SpacesController < ApplicationController
     @space = Space.new(space_params)
     @space.user = current_user
     authorize @space
-    @space.save
-    redirect_to space_path(@space)
+    if @space.save
+      redirect_to space_path(@space)
+    else
+      render :new
+    end
   end
 
   def edit

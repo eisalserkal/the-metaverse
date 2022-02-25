@@ -13,11 +13,12 @@
   <div class="m-4">
     <h2>Book your next session now</h2>
     <%= simple_form_for [ @space, @booking ] do |f| %>
-
+      <div>
       <%= f.date_field :booking_date, min: Date.today%>
-      <%= f.input :booking_start_time, as: :time, :minute_step => 30%>
-      <%= f.input :booking_end_time, as: :time, :minute_step => 15%>
-      <%= f.submit "Send a Booking request", class: "btn btn-primary" %>
+      </div>
+      <div class="mt-3">
+      <%= f.submit "Send a Booking request", class: "btn" %>
+      </div>
     <% end %>
   </div>
 </div>
@@ -34,7 +35,7 @@
 
 <h2>Description</h2>
 <h4>Supported VR headset: <%= @space.vr_headset %></h4>
-<h4>Price per hour: <%= @space.hourly_rate %></h4>
+<h4>Price per day: <%= @space.hourly_rate %></h4>
 <hr>
 
 <p>
