@@ -5,7 +5,7 @@
   <% else %>
   <%= cl_image_tag space.photo.key, height: 300, width: 400, crop: :fill %>
   <% end %>
-    <div class="card-trip-infos">
+    <div class="card-trip-infos d-flex align-items-start">
       <div>
         <h2><%= link_to space.name, space_path(space) %></h2>
         <p>Location: <%= space.location %></p>
