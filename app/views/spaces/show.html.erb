@@ -33,11 +33,11 @@
 <%# TODO: Add 'overview' to space model %>
 
 
-<h2>Description</h2>
+
 <h4>Supported VR headset: <%= @space.vr_headset %></h4>
 <h4>Price per day: <%= @space.hourly_rate %></h4>
 <hr>
-
+<h2>Description</h2>
 <p>
 <%= @space.overview %>
 </p>
@@ -50,7 +50,12 @@
 
 
 <h2>Latest reviews</h2>
+<% if @reviews_array_sorted.empty? %>
+<p>There are currently no reviews for this space.</p>
+<% end %>
+
 <% @reviews_array_sorted.each do |review| %>
+
     <div class="bg-light">
       <p >
         <% stars = review.rating %>
