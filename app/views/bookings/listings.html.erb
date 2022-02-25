@@ -17,7 +17,9 @@
   <hr>
   <h2>Pending bookings</h2>
   <h4>Bookings received</h4>
-
+  <% if !(@bookings_incoming.find { |booking| booking.status == 'Pending' }) %>
+  <p>You don't have any pending bookings</p>
+  <% end %>
   <% @bookings_incoming.each do |booking| %>
       <% if booking.status == 'Pending' %>
       <div class="card m-4" style="width: 18rem;">
@@ -43,6 +45,9 @@
   <% end %>
   <% end %>
   <h4>Bookings sent</h4>
+  <% if !(@bookings_outgoing.find { |booking| booking.status == 'Pending' }) %>
+  <p>You don't have any pending bookings</p>
+  <% end %>
   <% @bookings_outgoing.each do |booking| %>
     <% if booking.status == 'Pending' %>
       <div class="card m-4" style="width: 18rem;">
@@ -63,6 +68,9 @@
 
   <h2 class="mt-5">Accepted bookings</h2>
   <h4>Bookings received</h4>
+  <% if !(@bookings_incoming.find { |booking| booking.status == 'Accept' }) %>
+  <p>You don't have any accepted bookings</p>
+  <% end %>
   <% @bookings_incoming.each do |booking| %>
     <% if booking.status == 'Accept' %>
       <div class="card m-4" style="width: 18rem;">
@@ -90,6 +98,9 @@
   <% end %>
 
   <h4>Bookings sent</h4>
+  <% if !(@bookings_outgoing.find { |booking| booking.status == 'Accept' }) %>
+  <p>You don't have any accepted bookings</p>
+  <% end %>
   <% @bookings_outgoing.each do |booking| %>
     <% if booking.status == 'Accept' %>
     <div>
@@ -127,6 +138,9 @@
 
   <h2 class="mt-5">Declined bookings</h2>
   <h4>Bookings received</h4>
+  <% if !(@bookings_incoming.find { |booking| booking.status == 'Decline' }) %>
+  <p>You don't have any Declined bookings</p>
+  <% end %>
   <% @bookings_incoming.each do |booking| %>
     <% if booking.status == 'Decline' %>
       <div class="card m-4" style="width: 18rem;">
@@ -154,6 +168,9 @@
 
 
   <h4>Bookings sent</h4>
+  <% if !(@bookings_outgoing.find { |booking| booking.status == 'Decline' }) %>
+  <p>You don't have any Declined bookings</p>
+  <% end %>
   <% @bookings_outgoing.each do |booking| %>
     <% if booking.status == 'Decline' %>
       <div class="card m-4" style="width: 18rem;">
