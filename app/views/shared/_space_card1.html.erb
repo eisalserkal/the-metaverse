@@ -12,24 +12,32 @@
         <p>VR tech: <%= space.vr_headset %></p>
       </div>
       <h2 class="card-trip-pricing">AED <%= space.hourly_rate %>/hr</h2>
-      <p>rating:
+      <p class="rating fs-5">
       <% sum = 0 %>
       <% count = 0 %>
       <% space.reviews.each do |review| %>
         <% sum += review.rating %>
         <% count += 1 %>
       <% end %>
-      <% if count == 0 || sum == %>
-        <%= 0 %>
+      <% if count == 0 %>
+        <% 5.times do  %>
+        <i class="fa-solid fa-star grey"></i>
+        <% end %>
+        (<%= 0 %>)
       <% else %>
         <% average = sum/count %>
         <% average.round().times do  %>
         <i class="fa-solid fa-star"></i>
-      <% end %>
+        <% end %>
+        <% (5-average.round()).times do  %>
+        <i class="fa-solid fa-star grey"></i>
+        <% end %>
         (<%= count%>)
       <% end %>
       </p>
-      <%= link_to "Book now", space_path(space), class: "btn" %>
+      <% if !user_signed_in? || current_user.id != space.user_id %>
+        <%= link_to "Book now", space_path(space), class: "btn" %>
+      <% end %>
     </div>
   </div>
 </div>
