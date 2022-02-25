@@ -1,6 +1,10 @@
+
+<h2 class="text-center mt-2">Choose new booking date</h2>
+<div class="d-flex justify-content-center">
 <%= simple_form_for [ @space, @booking ] do |f| %>
           <%= f.input :booking_date %>
-          <%= f.input :booking_start_time %>
-          <%= f.input :booking_end_time %>
+          <div class="text-center">
           <%= f.submit "Send a Booking request", class: "btn btn-primary" %>
+          </div>
           <% end %>
+</div>
