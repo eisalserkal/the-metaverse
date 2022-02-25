@@ -35,6 +35,16 @@ class SpacesController < ApplicationController
       @space.games = 'Ace Combat 7: Skies Unknown, Ark: Survival Evolved, Batman: Arkham VR, Blood & Truth, Catlateral Damage, Dead Secret, Dirt Rally'
       @space.save
     end
+
+    @reviews_array = []
+    @space.bookings.each do |booking|
+
+      booking.reviews.each do |review|
+        @reviews_array << review
+      end
+    end
+
+    @reviews_array_sorted = @reviews_array.sort_by { |review| review.created_at }.reverse
   end
 
   def new

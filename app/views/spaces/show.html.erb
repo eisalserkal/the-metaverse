@@ -49,11 +49,7 @@
 
 
 <h2>Latest reviews</h2>
-
-<% @space.bookings.each do |booking| %>
-
-  <% booking.reviews.each do |review| %>
-
+<% @reviews_array_sorted.each do |review| %>
     <div class="bg-light">
       <p >
         <% stars = review.rating %>
@@ -65,9 +61,8 @@
         <% end %>
       </p>
       <p><%= review.content %></p>
-      <p>by <%= review.space.user.first_name %> <%= review.space.user.last_name %>, at <%= review.created_at %></p>
+      <p> <em style="color:grey">by <%= review.booking.user.first_name %> <%= review.booking.user.last_name %>, at <%= review.created_at %> </em></p>
 
     </div>
-    <% end %>
 <% end %>
 </div>
