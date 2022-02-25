@@ -25,6 +25,13 @@ class SpacesController < ApplicationController
     authorize @space
     @booking = Booking.new
     @booking.space = @space
+    if @space.vr_headset == 'HTC Vive' || @space.vr_headset == 'Valve Index'
+      @space.games = 'Batman: Arkham VR, Beat Saber, Blade and Sorcery, Catlateral Damage, Dota 2, Elite Dangerous'
+    elsif @space.vr_headset == 'Oculus Quest' || @space.vr_headset == 'Oculus Rift'
+      @space.games = 'American Truck Simulator, Assetto Corsa, Elite Dangerous, Gunjack, Edge of Nowhere, Subnautica, The Solus Project'
+    elsif @space.vr_headset == 'Playstation VR'
+      @space.games = 'Ace Combat 7: Skies Unknown, Ark: Survival Evolved, Batman: Arkham VR, Blood & Truth, Catlateral Damage, Dead Secret, Dirt Rally'
+    end
   end
 
   def new
