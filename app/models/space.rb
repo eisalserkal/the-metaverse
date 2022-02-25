@@ -7,7 +7,7 @@ class Space < ApplicationRecord
   validates :name, :location, :vr_headset, presence: true
   include PgSearch::Model
   pg_search_scope :search_by_name_location_vr,
-  against: [ :name, :location, :vr_headset],
+  against: [ :name, :location, :vr_headset, :games, :overview],
   using: {
     tsearch: {prefix: true}
   }
