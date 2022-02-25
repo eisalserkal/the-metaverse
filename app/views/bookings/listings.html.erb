@@ -1,5 +1,4 @@
 <div class="d-flex" data-controller="pagination">
-
   <div class="card" style="width: 18rem;">
     <div class="card-header">
       Dashboard
@@ -9,9 +8,7 @@
       <li class="list-group-item" data-action="click->pagination#listings">Listings</a></li>
     </ul>
   </div>
-
   <div class="container" >
-
   <div data-pagination-target="bookings" >
   <h1>My bookings</h1>
   <hr>
@@ -201,6 +198,9 @@
   <div class="d-none" data-pagination-target="listings">
     <h1 class="mt-4">My listings</h1>
     <hr>
+    <% if current_user.spaces.empty? %>
+    <p>You don't have any spaces</p>
+    <% end %>
     <%= link_to 'Add a Space', new_space_path, :class => "btn btn-primary m-4" %>
     <div class="row">
 

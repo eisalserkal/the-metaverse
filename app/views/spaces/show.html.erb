@@ -2,7 +2,7 @@
 <h2><%= @space.name %></h2>
 <%# TODO: Add 'has_photo' to space model %>
 <% if !user_signed_in? || current_user.id != @space.user_id %>
-<div class="d-flex">
+<div class="d-flex justify-content-between">
 <% if @space.photo.blank? %>
   <img src="https://www.cnet.com/a/img/LLg84fdggU-EGFI2bUQ7Sd0IpxE=/940x528/2017/10/20/e8f232cc-25eb-4fa8-a11f-e4e1941fed8d/vr-zone-shinjuku-007.jpg" alt="VR Zone">
 <% else %>
@@ -50,19 +50,20 @@
 
 
 <h2>Latest reviews</h2>
+<% @reviews_array_sorted.each do |review| %>
+    <div class="bg-light">
+      <p >
+        <% stars = review.rating %>
+        <% stars.times do  %>
+        <i class="fa-solid fa-star"></i>
+        <% end %>
+        <% (5-stars).times do  %>
+        <i class="fa-solid fa-star grey"></i>
+        <% end %>
+      </p>
+      <p><%= review.content %></p>
+      <p> <em style="color:grey">by <%= review.booking.user.first_name %> <%= review.booking.user.last_name %>, at <%= review.created_at %> </em></p>
 
-<% @space.bookings.each do |booking| %>
-
-  <% booking.reviews.each do |review| %>
-    <p>
-      <% stars = review.rating %>
-      <% stars.times do  %>
-      <i class="fa-solid fa-star"></i>
-      <% end %>
-    </p>
-    <p><%= review.content %></p>
-    <p>written by <%= review.space.user.email %></p>
-    <% end %>
-
+    </div>
 <% end %>
 </div>
