@@ -1,9 +1,13 @@
-<div class="container">
+<h2 class="text-center mt-2">Edit your Space</h2>
+<div class="d-flex justify-content-center">
 <%= simple_form_for @space, class: 'col-6' do |f| %>
   <%= f.input :name %>
   <%= f.input :location %>
-  <%= f.input :hourly_rate %>
+  <%= f.input :hourly_rate, label: 'Daily Rate'%>
   <%= f.input :vr_headset, collection: ['Oculus Rift', 'Oculus Quest', 'HTC Vive', 'Playstation VR', 'Valve Index']%>
+  <%= f.input :overview %>
+  <div class="text-center">
   <%= f.submit "Create listing", class: "btn btn-primary" %>
+  </div>
   <% end %>
 </div>
