@@ -1,1 +1,1 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team. An MVP marketplace app that allows users to regiser and create entries for their VR spaces, specify location and daily rate, leave reviews and ratings for other VR spaces, send and receive booking requests. 
